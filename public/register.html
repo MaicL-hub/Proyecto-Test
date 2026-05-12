@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Control de Tareas | Registro</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <script src="/js/shared.js" defer></script>
+  <script src="/js/auth.js" defer></script>
+</head>
+<body class="page-auth">
+  <div class="auth-shell">
+    <section class="surface auth-hero">
+      <div class="auth-panel">
+        <a class="brand" href="/">
+          <div class="brand-mark">CT</div>
+          <div class="brand-copy">
+            <strong>Control de Tareas</strong>
+            <span>Alta de usuarios y roles</span>
+          </div>
+        </a>
+        <div class="stack" style="gap:16px;">
+          <span class="kicker">Crea tu cuenta</span>
+          <h1 class="display">Registra un usuario y entra al panel en minutos.</h1>
+          <p class="lead">El flujo de registro prepara cuentas con rol usuario o administrador, listo para probar permisos, tareas y reportes dentro de la misma interfaz.</p>
+        </div>
+      </div>
+      <div class="pill-row">
+        <span class="badge success">Alta de usuario</span>
+        <span class="badge accent">Roles</span>
+        <span class="badge warning">UI moderna</span>
+        <span class="badge">Sin framework</span>
+      </div>
+    </section>
+
+    <section class="surface auth-card">
+      <form id="registerForm" class="auth-form">
+        <div class="form-head">
+          <span class="kicker">Registro</span>
+          <h2>Crear cuenta</h2>
+          <p class="helper">Completa los datos para generar un usuario de prueba en la plataforma.</p>
+        </div>
+
+        <label class="form-label">
+          <span>Usuario</span>
+          <input class="field" type="text" name="username" placeholder="Nombre de usuario" autocomplete="username" required />
+        </label>
+
+        <label class="form-label">
+          <span>Contraseña</span>
+          <input class="field" type="password" name="password" placeholder="Minimo 6 caracteres" minlength="6" autocomplete="new-password" required />
+        </label>
+
+        <label class="form-label">
+          <span>Rol</span>
+          <select class="select" name="role" required>
+            <option value="" selected disabled>Selecciona un rol</option>
+            <option value="user">Usuario</option>
+            <option value="admin">Administrador</option>
+          </select>
+        </label>
+
+        <div class="auth-actions">
+          <button class="primary-button" type="submit">Registrar</button>
+          <a class="link-button" href="/login.html">Ya tengo cuenta</a>
+        </div>
+
+        <div class="message" id="authMessage"></div>
+
+        <div class="auth-footer">
+          <span>Despues del registro, inicia sesion en un clic.</span>
+          <a class="link-button" href="/login.html">Volver a login</a>
+        </div>
+      </form>
+    </section>
+  </div>
+</body>
+</html>

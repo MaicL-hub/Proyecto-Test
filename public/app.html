@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Control de Tareas | Dashboard</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <script src="/js/shared.js" defer></script>
+  <script src="/js/dashboard.js" defer></script>
+</head>
+<body class="page-dashboard">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/">
+        <div class="brand-mark">CT</div>
+        <div class="brand-copy">
+          <strong>Control de Tareas</strong>
+          <span>Workspace profesional</span>
+        </div>
+      </a>
+
+      <div class="sidebar-card user-chip">
+        <span class="badge accent" id="userBadge">Workspace</span>
+        <strong id="userName">Usuario</strong>
+        <span id="userRole">Usuario</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-item active" type="button" data-view-btn="overview">Resumen <span>Inicio</span></button>
+        <button class="nav-item" type="button" data-view-btn="tasks">Tareas <span>CRUD</span></button>
+        <button class="nav-item" type="button" data-view-btn="profile">Perfil <span>Cuenta</span></button>
+        <button class="nav-item" type="button" data-view-btn="users">Usuarios <span>Admin</span></button>
+        <button class="nav-item" type="button" data-view-btn="reports">Reportes <span>KPI</span></button>
+        <button class="nav-item" type="button" data-view-btn="settings">Ajustes <span>UI</span></button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="ghost-button" type="button" id="quickTaskBtn">Nueva tarea</button>
+        <button class="ghost-button" type="button" id="logoutBtn">Cerrar sesion</button>
+      </div>
+    </aside>
+
+    <main class="app-main">
+      <header class="topbar">
+        <div>
+          <span class="kicker">Panel operativo</span>
+          <h1 id="pageTitle">Dashboard</h1>
+          <p class="subtitle" id="pageSubtitle">Resumen de actividad, tareas y accesos rapidos.</p>
+        </div>
+        <div class="topbar-actions">
+          <button class="secondary-button" type="button" data-open-create-task>Crear tarea</button>
+          <button class="ghost-button" type="button" id="quickLogoutBtn">Salir</button>
+        </div>
+      </header>
+
+      <section class="view active" data-view="overview">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Resumen</h2>
+              <p>Lectura rapida de tu actividad y estado general.</p>
+            </div>
+            <span class="badge success">Tiempo real</span>
+          </div>
+          <div class="stats-grid" id="overviewStats"></div>
+        </div>
+        <div class="panel" id="overviewActivity"></div>
+      </section>
+
+      <section class="view" data-view="tasks">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Gestor de tareas</h2>
+              <p>Crea, filtra y administra tareas con modal, estados y acciones rapidas.</p>
+            </div>
+            <span class="badge accent" id="taskCounter">0 tareas</span>
+          </div>
+          <div class="task-toolbar">
+            <div class="filters">
+              <input class="field" type="search" id="taskSearch" placeholder="Buscar tarea o descripcion" style="min-width:min(100%, 320px);">
+              <select class="select" id="taskFilter" style="width:auto;min-width:180px;">
+                <option value="all">Todas</option>
+                <option value="pending">Pendientes</option>
+                <option value="completed">Completadas</option>
+              </select>
+            </div>
+            <button class="primary-button" type="button" data-open-create-task>Nueva tarea</button>
+          </div>
+        </div>
+        <div class="task-grid" id="taskList"></div>
+      </section>
+
+      <section class="view" data-view="profile">
+        <div id="profileContent"></div>
+      </section>
+
+      <section class="view" data-view="users">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Usuarios</h2>
+              <p>Vista administrativa con el estado de las cuentas y su actividad.</p>
+            </div>
+            <span class="badge accent">Solo admin</span>
+          </div>
+          <div id="usersContent"></div>
+        </div>
+      </section>
+
+      <section class="view" data-view="reports">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Reportes</h2>
+              <p>Indicadores visuales generados desde tus tareas y, si aplica, el universo de usuarios.</p>
+            </div>
+            <span class="badge success">Analitica</span>
+          </div>
+          <div id="reportsContent"></div>
+        </div>
+      </section>
+
+      <section class="view" data-view="settings">
+        <div id="settingsContent"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="modalRoot" class="modal-root"></div>
+  <div id="toastRoot" class="toast-root" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

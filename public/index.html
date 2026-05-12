@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Control de Tareas | Landing</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <script src="/js/shared.js" defer></script>
+  <script src="/js/landing.js" defer></script>
+</head>
+<body class="page-landing">
+  <div class="page-shell landing-shell">
+    <div class="container">
+      <header class="landing-topbar">
+        <a class="brand" href="/">
+          <div class="brand-mark">CT</div>
+          <div class="brand-copy">
+            <strong>Control de Tareas</strong>
+            <span>Pruebas con JWT, roles y CRUD</span>
+          </div>
+        </a>
+        <div class="hero-actions">
+          <button class="ghost-button" type="button" data-go-login>Ingresar</button>
+          <button class="primary-button" type="button" data-go-register>Crear cuenta</button>
+        </div>
+      </header>
+
+      <section class="hero-grid" data-animate="fade-up">
+        <article class="surface hero-panel">
+          <div class="stack" style="gap:16px;">
+            <span class="kicker">Aplicacion de productividad</span>
+            <h1 class="display">Gestiona tareas con una experiencia de nivel profesional.</h1>
+            <p class="lead">Landing publica para usuarios no autenticados, dashboard privado con sidebar, modales, notificaciones y vistas internas para tareas, perfil, usuarios, reportes y ajustes.</p>
+            <div class="hero-actions">
+              <button class="primary-button" type="button" data-go-dashboard>Ir al dashboard</button>
+              <button class="secondary-button" type="button" data-go-register>Probar registro</button>
+            </div>
+            <div class="pill-row" data-landing-session></div>
+          </div>
+          <div class="hero-metrics" style="margin-top:22px;">
+            <div class="metric">
+              <strong>JWT</strong>
+              <span>Sesion segura</span>
+            </div>
+            <div class="metric">
+              <strong>CRUD</strong>
+              <span>Completo para tareas</span>
+            </div>
+            <div class="metric">
+              <strong>UI</strong>
+              <span>Responsive y moderna</span>
+            </div>
+          </div>
+        </article>
+
+        <aside class="surface hero-visual">
+          <div class="mock-window">
+            <div class="mock-toolbar">
+              <div class="dots"><i></i><i></i><i></i></div>
+              <span class="chip"><strong>Dashboard</strong> listo para usar</span>
+            </div>
+            <div class="mock-body">
+              <div class="mock-card">
+                <h3>Resumen operativo</h3>
+                <p>Panel con estadisticas, acceso rapido y vista por secciones para navegar sin perder contexto.</p>
+              </div>
+              <div class="mock-card">
+                <h3>Control por rol</h3>
+                <p>Usuarios normales y administradores tienen recorridos diferentes dentro de la misma interfaz.</p>
+              </div>
+              <div class="mock-card">
+                <h3>Experiencia de prueba</h3>
+                <p>Incluye modales, feedback visual y responsive design para validar flujos reales de producto.</p>
+              </div>
+            </div>
+          </div>
+          <div class="surface-strong soft-card" style="padding:18px;">
+            <span class="badge success">Acceso rapido</span>
+            <p class="helper" style="margin:12px 0 0;">Si ya tienes sesion iniciada, puedes entrar directo al dashboard privado sin volver a capturar credenciales.</p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="feature-grid" data-animate="stagger" style="margin-top:22px;">
+        <article class="surface feature-card" data-feature-card>
+          <span class="badge accent">Landing</span>
+          <h3>Presentacion clara</h3>
+          <p>Separa el acceso publico de la experiencia privada y actua como entrada comercial al sistema.</p>
+        </article>
+        <article class="surface feature-card" data-feature-card>
+          <span class="badge success">Dashboard</span>
+          <h3>Sidebar y rutas internas</h3>
+          <p>Vista principal con navegacion por secciones para tareas CRUD, perfil, usuarios, reportes y ajustes.</p>
+        </article>
+        <article class="surface feature-card" data-feature-card>
+          <span class="badge warning">Feedback</span>
+          <h3>Notificaciones y modales</h3>
+          <p>Toasts y modales modernos para confirmaciones, creacion y edicion de contenido sin salir de la pantalla.</p>
+        </article>
+      </section>
+
+      <section class="surface section-card" style="margin-top:22px;">
+        <div class="section-title">
+          <div>
+            <span class="kicker">Flujos</span>
+            <h2>Accesos rapidos</h2>
+          </div>
+          <span class="badge">Frontend sin frameworks</span>
+        </div>
+        <div class="hero-actions">
+          <button class="primary-button" type="button" data-go-login>Ir a login</button>
+          <button class="ghost-button" type="button" data-go-register>Ir a registro</button>
+          <button class="secondary-button" type="button" data-go-dashboard>Entrar al dashboard</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
+  margin: 0;
+  font-size: 1.9rem;
+}
+
+.top-bar {
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.app-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #003366;
+  margin: 0 0 10px 0;
+  text-shadow: 1px 1px 4px #ffffff50;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px; /* espacio uniforme entre todos los botones */
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#adminBtns {
+  display: flex;
+  gap: 12px;
+  margin-right: 12px; /* separa botones de admin del de cerrar sesión */
+}
+
+.main-btn {
+  padding: 10px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #1a4f91;
+  color: white;
+  box-shadow: 0 3px 6px rgba(26, 79, 145, 0.3);
+}
+
+.main-btn:hover {
+  background-color: #13356f;
+  box-shadow: 0 6px 12px rgba(26, 79, 145, 0.4);
+}
+
+.main-btn.gray {
+  background-color: #6c757d;
+}
+
+.main-btn.gray:hover {
+  background-color: #565e64;
+}
+
+#userTableContainer {
+  margin-top: 30px;
+  overflow-x: auto;
+}
+
+#userTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(26, 79, 145, 0.15);
+  font-size: 1rem;
+  color: #003366;
+}
+
+#userTable thead {
+  background-color: #1a4f91;
+  color: #ffffff;
+  text-align: left;
+}
+
+#userTable th,
+#userTable td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #e1ecf7;
+}
+
+#userTable tbody tr:hover {
+  background-color: #f0f6ff;
+  transition: background-color 0.3s ease;
+}
+
+#userTable th:first-child,
+#userTable td:first-child {
+  border-top-left-radius: 10px;
+}
+
+#userTable th:last-child,
+#userTable td:last-child {
+  border-top-right-radius: 10px;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- ✅ NUEVA BARRA SUPERIOR FUERA DEL CONTENEDOR -->
+    <div class="top-bar">
+      <h1 class="app-title">Control de Tareas</h1>
+      <div class="button-group">
+        <div id="adminBtns" style="display: none;">
+          <button id="btnMisTareas" class="main-btn">Mis Tareas</button>
+          <button id="btnUsuarios" class="main-btn">Usuarios</button>
+        </div>
+        <button onclick="cerrarSesion()" id="logoutBtn" class="main-btn gray">Cerrar sesión</button>
+      </div>
+    </div>
+
+
+  <h2 id="pageTitle">Mis Tareas</h2>
+
+
+
+<!-- Formulario de tareas -->
+<div class="task-form" id="taskForm">
+  <input type="text" id="title" placeholder="Título de la tarea" />
+  <input type="text" id="description" placeholder="Descripción" />
+  <button onclick="crearTarea()">Agregar</button>
+</div>
+
+<!-- Lista de tareas -->
+<div class="task-list" id="taskList"></div>
+
+<!-- Tabla para mostrar usuarios, oculto por defecto -->
+<div id="userTableContainer" style="display:none; margin-top:20px;">
+  <table id="userTable">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Rol</th>
+        <th>Cantidad de Tareas</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+  </div>
+
+  <script src="js/tasks.js"></script>
+</body>
+</html>
