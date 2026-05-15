@@ -1,5 +1,5 @@
 {
-  "apikey": "",
+  "apikey": "ag_ad89709c794d17471f64ecf2",
   "telemetry": {
     "enabled": false,
     "endpoint": "https://api.apiguardmonitor.com/api/v1/telemetry"
