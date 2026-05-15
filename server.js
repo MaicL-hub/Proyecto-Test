@@ -31,6 +31,11 @@ app.use(guard);
 // Conectar a la base de datos
 connectDB();
 
+// Ruta raíz
+app.get('/', (req, res) => {
+  res.json({ message: 'Bienvenido a la API', status: 'online' });
+});
+
 // Rutas
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);
