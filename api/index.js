@@ -1,0 +1,43 @@
+// api/index.js - Vercel Serverless Handler
+import 'dotenv/config';
+import express from 'express';
+import cors from 'cors';
+import connectDB from '../config/db.js';
+import apiguard from 'apiguard-js';
+
+// Importamos las rutas
+import authRoutes from '../routes/authRoutes.js';
+import taskRoutes from '../routes/taskRoutes.js';
+import userRoutes from '../routes/userRoutes.js';
+
+const app = express();
+
+// --- APIGuard Middleware ---
+const guard = apiguard();
+
+// Middlewares estándar
+app.use(cors({
+  origin: process.env.CORS_ORIGIN || ['http://localhost:3000', 'http://localhost:5173', 'https://proyecto-test-pi.vercel.app'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+app.use(express.json());
+app.use(express.static('public'));
+app.use(guard);
+
+// Conectar a la base de datos (sin bloquear)
+connectDB().catch(err => console.error('MongoDB connection error:', err));
+
+// Ruta raíz
+app.get('/', (req, res) => {
+  res.json({ message: 'Bienvenido', status: 'online' });
+});
+
+// Rutas API
+app.use('/api/auth', authRoutes);
+app.use('/api/tasks', taskRoutes);
+app.use('/api/users', userRoutes);
+
+// Exportar para Vercel
+export default app;
