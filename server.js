@@ -28,12 +28,12 @@ app.use(cors({
 app.use(express.json());
 app.use(express.static('public'));
 app.use(guard);
-// Conectar a la base de datos
-connectDB();
+// Conectar a la base de datos (sin bloquear el startup)
+connectDB().catch(err => console.error('MongoDB connection error:', err));
 
 // Ruta raíz
 app.get('/', (req, res) => {
-  res.json({ message: 'Bienvenido a la API', status: 'online' });
+  res.json({ message: 'Bienvenido', status: 'online' });
 });
 
 // Rutas
