@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3000;
 // --- APIGuard Middleware ---
 // Se inicializa y se coloca antes que el resto para máxima seguridad
 const guard = apiguard();
-app.use(guard);
+
 
 // Middlewares estándar
 app.use(cors({
@@ -27,7 +27,7 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(express.static('public'));
-
+app.use(guard);
 // Conectar a la base de datos
 connectDB();
 
