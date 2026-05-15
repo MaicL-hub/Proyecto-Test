@@ -1,18 +1,15 @@
-// api/index.js - Vercel Serverless Handler
+// api/[...route].js - Todas las rutas API
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import connectDB from '../config/db.js';
 import apiguard from 'apiguard-js';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
 
 // Importamos las rutas
 import authRoutes from '../routes/authRoutes.js';
 import taskRoutes from '../routes/taskRoutes.js';
 import userRoutes from '../routes/userRoutes.js';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 
 // --- APIGuard Middleware ---
@@ -26,10 +23,6 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
-
-// Servir archivos estáticos PRIMERO (importante para Vercel)
-app.use(express.static(join(__dirname, '../public')));
-
 app.use(guard);
 
 // Conectar a la base de datos (sin bloquear)
@@ -40,9 +33,9 @@ app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/users', userRoutes);
 
-// Fallback para SPA - sirve index.html para rutas no definidas
-app.get('*', (req, res) => {
-  res.sendFile(join(__dirname, '../public/index.html'));
+// Health check
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'online' });
 });
 
 // Exportar para Vercel
