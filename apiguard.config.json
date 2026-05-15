@@ -1,8 +1,8 @@
 {
-  "apiKey": "",
+  "apikey": "",
   "telemetry": {
     "enabled": false,
-    "endpoint": ""
+    "endpoint": "https://api.apiguardmonitor.com/api/v1/telemetry"
   },
   "security": {
     "detectors": {
@@ -15,8 +15,7 @@
         "enabled": true,
         "authPaths": [
           "/login",
-          "/signin",
-          "/api/auth/login"
+          "/signin"
         ],
         "methods": [
           "POST"
@@ -37,15 +36,20 @@
           "password",
           "token",
           "secret",
-          "content",
-          "description"
+          "content"
         ]
       },
       "noSqlInjection": {
         "enabled": true,
         "threshold": 20,
         "checkQuery": true,
-        "checkBody": true
+        "checkBody": true,
+        "excludeFields": [
+          "password",
+          "token",
+          "secret",
+          "content"
+        ]
       },
       "scraping": {
         "enabled": true,
@@ -70,7 +74,9 @@
           "enabled": true,
           "windowMs": 60000,
           "threshold": 10,
-          "endpoints": [],
+          "endpoints": [
+            "/export"
+          ],
           "cooldownMs": 5000
         }
       }
