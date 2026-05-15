@@ -41,7 +41,7 @@ app.use('/api/tasks', taskRoutes);
 app.use('/api/users', userRoutes);
 
 // Fallback para SPA: servir index.html para rutas no reconocidas
-app.get('*', (req, res) => {
+app.use((req, res) => {
   res.sendFile(join(__dirname, '../public/index.html'));
 });
 
