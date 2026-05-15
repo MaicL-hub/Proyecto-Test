@@ -4,12 +4,15 @@ import express from 'express';
 import cors from 'cors';
 import connectDB from '../config/db.js';
 import apiguard from 'apiguard-js';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 
 // Importamos las rutas
 import authRoutes from '../routes/authRoutes.js';
 import taskRoutes from '../routes/taskRoutes.js';
 import userRoutes from '../routes/userRoutes.js';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 
 // --- APIGuard Middleware ---
@@ -23,21 +26,24 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
-app.use(express.static('public'));
+
+// Servir archivos estáticos PRIMERO (importante para Vercel)
+app.use(express.static(join(__dirname, '../public')));
+
 app.use(guard);
 
 // Conectar a la base de datos (sin bloquear)
 connectDB().catch(err => console.error('MongoDB connection error:', err));
 
-// Ruta raíz
-app.get('/', (req, res) => {
-  res.json({ message: 'Bienvenido', status: 'online' });
-});
-
 // Rutas API
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/users', userRoutes);
+
+// Fallback para SPA - sirve index.html para rutas no definidas
+app.get('*', (req, res) => {
+  res.sendFile(join(__dirname, '../public/index.html'));
+});
 
 // Exportar para Vercel
 export default app;
