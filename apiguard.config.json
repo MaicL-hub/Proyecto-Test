@@ -1,7 +1,7 @@
 {
   "apikey": "ag_ad89709c794d17471f64ecf2",
   "telemetry": {
-    "enabled": false,
+    "enabled": true,
     "endpoint": "https://api.apiguardmonitor.com/api/v1/telemetry"
   },
   "security": {
@@ -15,14 +15,15 @@
         "enabled": true,
         "authPaths": [
           "/login",
-          "/signin"
+          "/signin",
+          "/api/auth/login"
         ],
         "methods": [
           "POST"
         ],
         "failureStatusCodes": [
-          401,
-          403
+          400,
+          401
         ],
         "threshold": 5,
         "windowMS": 60000
@@ -85,12 +86,12 @@
       "threat.auth_bruteforce": {
         "action": "block",
         "scope": "ip",
-        "duration": 900000
+        "duration": 10000
       },
       "threat.endpoint_enumeration": {
         "action": "delay",
         "scope": "ip",
-        "duration": 300000,
+        "duration": 10000,
         "delay": {
           "min": 1000,
           "max": 5000
@@ -99,16 +100,16 @@
       "threat.sql_injection": {
         "action": "block",
         "scope": "ip",
-        "duration": 3600000
+        "duration": 10000
       },
       "threat.nosql_injection": {
         "action": "block",
         "scope": "ip",
-        "duration": 3600000
+        "duration": 10000
       },
       "threat.scraping": {
         "action": "delay",
-        "duration": 600000,
+        "duration": 10000,
         "scope": "ip",
         "delay": {
           "min": 2000,
@@ -118,7 +119,7 @@
       "threat.dos": {
         "action": "delay",
         "scope": "ip",
-        "duration": 60000,
+        "duration": 10000,
         "delay": {
           "min": 500,
           "max": 2000
@@ -127,7 +128,7 @@
       "threat.dos.expensive_endpoint": {
         "action": "rateLimit",
         "scope": "ip",
-        "duration": 120000,
+        "duration": 10000,
         "rateLimit": {
           "maxRequests": 5,
           "windowMs": 60000
