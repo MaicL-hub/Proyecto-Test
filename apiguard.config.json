@@ -1,5 +1,5 @@
 {
-  "apikey": "ag_ad89709c794d17471f64ecf2",
+  "apiKey": "ag_ad89709c794d17471f64ecf2",
   "telemetry": {
     "enabled": true,
     "endpoint": "https://api.apiguardmonitor.com/api/v1/telemetry"
@@ -8,7 +8,7 @@
     "detectors": {
       "endpointEnumeration": {
         "enabled": true,
-        "windowMS": 60000,
+        "windowMs": 60000,
         "threshold": 15
       },
       "bruteForce": {
@@ -26,7 +26,7 @@
           401
         ],
         "threshold": 5,
-        "windowMS": 60000
+        "windowMs": 60000
       },
       "sqlInjection": {
         "enabled": true,
